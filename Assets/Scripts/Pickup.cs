@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    private int damage;
 
     void OnTriggerEnter(Collider other)
     {
