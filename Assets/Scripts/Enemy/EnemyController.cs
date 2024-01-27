@@ -62,8 +62,6 @@ public class EnemyController : Ticklable
 
                 break;
             case EnemyState.LookingForPlayer:
-                Vector3 direction = playerTransform.position - transform.position;
-                Quaternion quat = new Quaternion();
                 _navMeshAgent.destination = playerTransform.position;
                 _state = EnemyState.MovingToGoal;
                 break;
@@ -117,7 +115,6 @@ public class EnemyController : Ticklable
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("player entered cone");
         _playerInCone = true;
     }
 
