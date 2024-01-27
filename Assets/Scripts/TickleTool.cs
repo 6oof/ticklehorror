@@ -7,9 +7,15 @@ public class TickleTool : MonoBehaviour
 {
     public float range = 5f;
     public int damage = 50;
+    public float fireRate = 1f;
+    [SerializeField] private float timeSinceLastFire = 2f; 
     private Ticklable ticklable;
+    [SerializeField]private Transform nerfBullet;
+    private Rigidbody bulletRB;
     BoxCollider col;
     [SerializeField]private bool isColliding;
+    public float projectileSpeed = 10f;
+    private Camera mainCam;
 
     public int Damage {
         get {
@@ -25,10 +31,24 @@ public class TickleTool : MonoBehaviour
         col = GetComponent<BoxCollider>();
         col.size = new Vector3(1, 1, range);
         col.center = new Vector3(0, 0, range * 0.5f);
+        mainCam = Camera.main;
     }
 
     void Update()
     {
+        Debug.Log(transform.Find("Nerf").gameObject.activeSelf);
+        if ( transform.Find("Nerf").gameObject.activeSelf ) {
+            if ( timeSinceLastFire > fireRate ) {
+                if (Input.GetMouseButton(0)) {
+                        var bullet = Instantiate(nerfBullet, transform.position, transform.rotation);
+                        bulletRB = bullet.GetComponent<Rigidbody>();
+                        bulletRB.velocity = bullet.transform.forward * projectileSpeed;
+                        timeSinceLastFire = 0;
+                    } 
+            } else {
+                timeSinceLastFire += Time.deltaTime;
+            }
+        }
         if (isColliding) {
             Debug.Log("coliding with tickalable");
             if (Input.GetMouseButtonDown(0))
@@ -57,9 +77,5 @@ public class TickleTool : MonoBehaviour
             ticklable = null;
             Debug.Log("Exited tickling zone"); 
         }
-    }
-
-    private void UpdateTickleTool() {
-        
     }
 }
