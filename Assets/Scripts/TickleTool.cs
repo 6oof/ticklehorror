@@ -7,7 +7,7 @@ public class TickleTool : MonoBehaviour
 {
     public float range = 5f;
     public int damage = 50;
-    public Ticklable ticklable;
+    private Ticklable ticklable;
     BoxCollider col;
     [SerializeField]private bool isColliding;
 
@@ -39,7 +39,7 @@ public class TickleTool : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        Ticklable ticklable = other.transform.GetComponent<Ticklable>();
+        ticklable = other.transform.GetComponent<Ticklable>();
         if (ticklable) {
             isColliding = true;
             Debug.Log("Entered tickling zone");
@@ -49,7 +49,7 @@ public class TickleTool : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Ticklable ticklable = other.transform.GetComponent<Ticklable>();
+        ticklable = other.transform.GetComponent<Ticklable>();
         if (ticklable) {
             isColliding = false;
             Debug.Log("Exited tickling zone"); 
