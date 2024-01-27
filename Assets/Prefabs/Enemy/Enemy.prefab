@@ -155,8 +155,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   goalParent: {fileID: 0}
-  goalParent: {fileID: 0}
   chaseTime: 1
+  animator: {fileID: 5421036796691095780}
 --- !u!54 &4870627806639724104
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -184,7 +184,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
-  animator: {fileID: 5421036796691095780}
 --- !u!1001 &1453852829432943699
 PrefabInstance:
   m_ObjectHideFlags: 0
