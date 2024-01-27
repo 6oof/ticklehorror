@@ -16,6 +16,7 @@ public class EnemyController : Ticklable
     
     private NavMeshAgent _navMeshAgent;
     private EnemyGoal _currentGoal;
+    [SerializeField]private Animator animator;
     private float _waitTime;
 
     private enum EnemyState
@@ -44,6 +45,7 @@ public class EnemyController : Ticklable
             {
                 _state = EnemyState.ChasingPlayer;
                 _chaseTimeLeft = chaseTime;
+                animator.SetBool("spotsPlayer", true);
             }
         }
 
@@ -54,10 +56,14 @@ public class EnemyController : Ticklable
                 if (_chaseTimeLeft > 0)
                 {
                     _navMeshAgent.destination = playerTransform.position;
+                    animator.SetBool("isMoving", true);
+                    animator.SetBool("spotsPlayer", true);
                 }
                 else
                 {
                     _state = EnemyState.FindingNewGoal;
+                    animator.SetBool("isMoving", true);
+                    animator.SetBool("spotsPlayer", false);
                 }
 
                 break;
@@ -66,28 +72,36 @@ public class EnemyController : Ticklable
                 Quaternion quat = new Quaternion();
                 quat.SetLookRotation(direction);
                 goals.Insert(0,CreateNewGoal(1, transform.position, quat));
+                animator.SetBool("isMoving", true);
+                animator.SetBool("spotsPlayer", false);
                 break;
             case EnemyState.AchievingGoal:
                 Debug.Log("achieving goal");
                 float angleToDestination = Mathf.Clamp(_currentGoal.transform.rotation.eulerAngles.y-transform.rotation.eulerAngles.y, -goalMaxRotationSpeed,goalMaxRotationSpeed);
                 transform.Rotate(Vector3.up * angleToDestination);
-            
+                animator.SetBool("isMoving", false);
+                animator.SetBool("spotsPlayer", false);
                 _waitTime -= Time.deltaTime;
                 if (_waitTime <= 0)
                 {
+                    animator.SetBool("isMoving", true);
                     _state = EnemyState.FindingNewGoal;
                     _currentGoal = null;
                 }
 
                 break;
             case EnemyState.MovingToGoal:
+                animator.SetBool("isMoving", true);
                 if (_navMeshAgent.remainingDistance < 0.1)
                 {
+                    animator.SetBool("isMoving", false);
                     _state = EnemyState.AchievingGoal;
                 }
 
                 break;
             case EnemyState.FindingNewGoal:
+                animator.SetBool("isMoving", false);
+
                 if (_currentGoal != null)
                 {
                     _navMeshAgent.destination = _currentGoal.transform.position;
@@ -100,6 +114,7 @@ public class EnemyController : Ticklable
                     _currentGoal = goals[0];
                     _navMeshAgent.destination = _currentGoal.transform.position;
                     goals.RemoveAt(0);
+                    
                     _state = EnemyState.MovingToGoal;
                 }
 
