@@ -78,7 +78,7 @@ public class TickleTool : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        Ticklable colliding = other.transform.gameObject.GetComponent<Ticklable>();
+        EnemyController colliding = other.transform.gameObject.GetComponent<EnemyController>();
         if (colliding) {
             isColliding = true;
             ticklable = colliding;
@@ -89,7 +89,7 @@ public class TickleTool : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Ticklable colliding = other.transform.GetComponent<Ticklable>();
+        EnemyController colliding = other.transform.GetComponent<EnemyController>();
         if (colliding) {
             isColliding = false;
             ticklable = null;
