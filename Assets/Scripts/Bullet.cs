@@ -5,6 +5,15 @@ using UnityEngine;
 public class Bullet : TickleTool
 {
     private BoxCollider boxCollider;
+    // You can set a different damage value for the Bullet class
+    private int bulletDamage = 100;
+
+    // Override the Damage property from the base class
+    public override int Damage
+    {
+        get { return bulletDamage; }
+        set { bulletDamage = value; }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +32,7 @@ public class Bullet : TickleTool
         if (ticklable) {
             // ticklable.Hit(damage, transform.position);
             Debug.Log("Bullet hits.");
-            ticklable.Hit(damage, transform.position);
+            ticklable.Hit(Damage, transform.position);
         }
     }
 }
