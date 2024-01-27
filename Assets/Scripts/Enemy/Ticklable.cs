@@ -38,8 +38,7 @@ public class Ticklable : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    { 
     }
 
     public virtual bool Hit(int damage, Vector3 hitPosition) {

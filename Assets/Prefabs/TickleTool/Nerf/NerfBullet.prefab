@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5739457523292914193}
   - component: {fileID: 5497477689133059216}
+  - component: {fileID: 4046567815354559295}
   - component: {fileID: 2903116325090406379}
   m_Layer: 0
   m_Name: NerfBullet
@@ -55,6 +56,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.06, y: 0.04, z: 0.15}
   m_Center: {x: -0.11, y: 0, z: 0.06}
+--- !u!114 &4046567815354559295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454934364657826132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b085f164ebc394faa75d1600bf8730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &2903116325090406379
 Rigidbody:
   m_ObjectHideFlags: 0

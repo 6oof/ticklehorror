@@ -387,11 +387,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 3
   damage: 40
-  fireRate: 1
-  timeSinceLastFire: 0
+  fireRate: 0.25
+  timeSinceLastFire: 0.5
   nerfBullet: {fileID: 5739457523292914193, guid: fe12631e8a43e9e4197bce397c092730, type: 3}
   isColliding: 0
-  projectileSpeed: 10
+  projectileSpeed: 30
   bulletSpawnPoint: {fileID: 7079828496375141088}
 --- !u!1 &7079828496375141088
 GameObject:

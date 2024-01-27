@@ -43,6 +43,7 @@ public class TickleTool : MonoBehaviour
                         bulletRB = bullet.GetComponent<Rigidbody>();
                         bulletRB.velocity = bullet.transform.forward * projectileSpeed;
                         timeSinceLastFire = 0;
+
                     } 
             } else {
                 timeSinceLastFire += Time.deltaTime;
