@@ -42,7 +42,7 @@ public class Ticklable : MonoBehaviour
         
     }
 
-    public bool Hit(int damage) {
+    public virtual bool Hit(int damage, Vector3 hitPosition) {
         if (IsAlive) {
             Health -= damage;
             return true;

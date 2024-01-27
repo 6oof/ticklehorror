@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3900993941552799022}
   - component: {fileID: 3839682415090151160}
   - component: {fileID: 6585305304317078815}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4726838665645915433}
   - component: {fileID: 5041251693215994514}
   - component: {fileID: 5799386209896991843}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Feather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 2007582170520856681}
   - component: {fileID: 2948156161317697684}
   - component: {fileID: 878234025937326278}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TickleTool
   m_TagString: Untagged
   m_Icon: {fileID: 0}

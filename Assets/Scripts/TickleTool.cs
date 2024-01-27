@@ -31,7 +31,7 @@ public class TickleTool : MonoBehaviour
     {
         if (isColliding) {
             if (Input.GetMouseButtonDown(0))
-            ticklable.Hit(damage);
+            ticklable.Hit(damage, transform.position);
         }
         // transform.localPosition = new Vector3(0, 1.5f + (-holdPos.rotation.x * 3.6f), 1);
         // transform.localRotation = Quaternion.Euler(holdPos.rotation.x, 0, 0);
