@@ -26,9 +26,9 @@ public class EnemyController : Ticklable
         AchievingGoal
     }
 
-    private bool playerInCone;
+    private bool _playerInCone;
 
-    private EnemyState state = EnemyState.FindingNewGoal;
+    private EnemyState _state = EnemyState.FindingNewGoal;
 
     private void Awake()
     {
@@ -37,18 +37,18 @@ public class EnemyController : Ticklable
 
     private void Update()
     {
-        if (playerInCone)
+        if (_playerInCone)
         {
             if (PlayerInSight())
             {
                 Debug.Log("player in sight");
-                state = EnemyState.ChasingPlayer;
+                _state = EnemyState.ChasingPlayer;
                 _chaseTimeLeft = chaseTime;
             }
         }
-        Debug.Log(state);
+        Debug.Log(_state);
 
-        switch (state)
+        switch (_state)
         {
             case EnemyState.ChasingPlayer:
                 _chaseTimeLeft -= Time.deltaTime;
@@ -58,7 +58,7 @@ public class EnemyController : Ticklable
                 }
                 else
                 {
-                    state = EnemyState.FindingNewGoal;
+                    _state = EnemyState.FindingNewGoal;
                 }
 
                 break;
@@ -72,7 +72,7 @@ public class EnemyController : Ticklable
                 _waitTime -= Time.deltaTime;
                 if (_waitTime <= 0)
                 {
-                    state = EnemyState.FindingNewGoal;
+                    _state = EnemyState.FindingNewGoal;
                     _currentGoal = null;
                 }
 
@@ -80,7 +80,7 @@ public class EnemyController : Ticklable
             case EnemyState.MovingToGoal:
                 if (_navMeshAgent.remainingDistance < 0.1)
                 {
-                    state = EnemyState.AchievingGoal;
+                    _state = EnemyState.AchievingGoal;
                 }
 
                 break;
@@ -88,7 +88,7 @@ public class EnemyController : Ticklable
                 if (_currentGoal != null)
                 {
                     _navMeshAgent.destination = _currentGoal.transform.position;
-                    state = EnemyState.MovingToGoal;
+                    _state = EnemyState.MovingToGoal;
                 }
 
                 else if (goals.Count > 0)
@@ -97,7 +97,7 @@ public class EnemyController : Ticklable
                     _currentGoal = goals[0];
                     _navMeshAgent.destination = _currentGoal.transform.position;
                     goals.RemoveAt(0);
-                    state = EnemyState.MovingToGoal;
+                    _state = EnemyState.MovingToGoal;
                 }
 
                 break;
@@ -115,19 +115,24 @@ public class EnemyController : Ticklable
 
     private void OnTriggerEnter(Collider other)
     {
-        state = EnemyState.ChasingPlayer;
-        playerInCone = true;
+        _playerInCone = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        playerInCone = false;
+        _playerInCone = false;
     }
 
     private bool PlayerInSight()
     {
-        return Physics.Raycast(transform.position, playerTransform.position - transform.position);
-        
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out hit, 25,
+                LayerMask.GetMask("Default", "Player")))
+        {
+            return hit.collider.gameObject.layer == LayerMask.NameToLayer("Player");
+        }
+
+        return false;
     }
 
     public override bool Hit(int damage, Vector3 hitPosition)
@@ -135,7 +140,7 @@ public class EnemyController : Ticklable
         if (IsAlive)
         {
             Health -= damage;
-            state = EnemyState.LookingForPlayer;
+            _state = EnemyState.LookingForPlayer;
             return true;
         }
         return false;
