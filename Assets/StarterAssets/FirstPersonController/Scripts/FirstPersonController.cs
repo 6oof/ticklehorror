@@ -127,6 +127,7 @@ namespace StarterAssets
 			// set sphere position, with offset
 			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 			Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+			Debug.Log(Grounded);
 		}
 
 		private void CameraRotation()
@@ -236,7 +237,7 @@ namespace StarterAssets
 				}
 
 				// if we are not grounded, do not jump
-				_input.jump = false;
+				_input.jump = false; 
 			}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
