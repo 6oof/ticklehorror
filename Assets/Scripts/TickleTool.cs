@@ -15,7 +15,7 @@ public class TickleTool : MonoBehaviour
     BoxCollider col;
     [SerializeField]private bool isColliding;
     public float projectileSpeed = 10f;
-    private Camera mainCam;
+    [SerializeField]private GameObject bulletSpawnPoint;
 
     public int Damage {
         get {
@@ -31,16 +31,15 @@ public class TickleTool : MonoBehaviour
         col = GetComponent<BoxCollider>();
         col.size = new Vector3(1, 1, range);
         col.center = new Vector3(0, 0, range * 0.5f);
-        mainCam = Camera.main;
+        bulletSpawnPoint = GameObject.Find("BulletSpawnPoint");
     }
 
     void Update()
     {
-        Debug.Log(transform.Find("Nerf").gameObject.activeSelf);
         if ( transform.Find("Nerf").gameObject.activeSelf ) {
             if ( timeSinceLastFire > fireRate ) {
                 if (Input.GetMouseButton(0)) {
-                        var bullet = Instantiate(nerfBullet, transform.position, transform.rotation);
+                        var bullet = Instantiate(nerfBullet, bulletSpawnPoint.transform.position, transform.rotation);
                         bulletRB = bullet.GetComponent<Rigidbody>();
                         bulletRB.velocity = bullet.transform.forward * projectileSpeed;
                         timeSinceLastFire = 0;
