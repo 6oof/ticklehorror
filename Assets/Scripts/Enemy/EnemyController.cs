@@ -64,11 +64,10 @@ public class EnemyController : Ticklable
             case EnemyState.LookingForPlayer:
                 Vector3 direction = playerTransform.position - transform.position;
                 Quaternion quat = new Quaternion();
-                quat.SetLookRotation(direction);
-                goals.Insert(0,CreateNewGoal(1, transform.position, quat));
+                _navMeshAgent.destination = playerTransform.position;
+                _state = EnemyState.MovingToGoal;
                 break;
             case EnemyState.AchievingGoal:
-                Debug.Log("achieving goal");
                 float angleToDestination = Mathf.Clamp(_currentGoal.transform.rotation.eulerAngles.y-transform.rotation.eulerAngles.y, -goalMaxRotationSpeed,goalMaxRotationSpeed);
                 transform.Rotate(Vector3.up * angleToDestination);
             
@@ -118,6 +117,7 @@ public class EnemyController : Ticklable
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("player entered cone");
         _playerInCone = true;
     }
 
