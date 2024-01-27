@@ -68,6 +68,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b085f164ebc394faa75d1600bf8730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 5
+  damage: 50
+  fireRate: 1
+  timeSinceLastFire: 2
+  nerfBullet: {fileID: 0}
+  blasterBullet: {fileID: 0}
+  isColliding: 0
+  projectileSpeed: 10
+  bulletSpawnPoint: {fileID: 0}
 --- !u!54 &2903116325090406379
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94,7 +103,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &3388060448569966909
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,13 +11,14 @@ public class TickleTool : MonoBehaviour
     [SerializeField] private float timeSinceLastFire = 2f; 
     private Ticklable ticklable;
     [SerializeField]private Transform nerfBullet;
+    [SerializeField]private Transform blasterBullet;
     private Rigidbody bulletRB;
     BoxCollider col;
     [SerializeField]private bool isColliding;
     public float projectileSpeed = 10f;
     [SerializeField]private GameObject bulletSpawnPoint;
 
-    public int Damage {
+    public virtual int Damage {
         get {
             return damage;
         } set {
@@ -41,18 +42,35 @@ public class TickleTool : MonoBehaviour
                 if (Input.GetMouseButton(0)) {
                         var bullet = Instantiate(nerfBullet, bulletSpawnPoint.transform.position, transform.rotation);
                         bulletRB = bullet.GetComponent<Rigidbody>();
+                        var bulletScript = bullet.GetComponent<Bullet>();
+                        bulletScript.Damage = 50;
                         bulletRB.velocity = bullet.transform.forward * projectileSpeed;
                         timeSinceLastFire = 0;
-
                     } 
+            } else {
+                timeSinceLastFire += Time.deltaTime;
+            }
+        }
+        if (transform.Find("AlienCannon").gameObject.activeSelf) {
+            if (timeSinceLastFire > fireRate) {
+                if (Input.GetMouseButton(0)) {
+                    var bullet = Instantiate (blasterBullet, bulletSpawnPoint.transform.position, transform.rotation);
+                    var bulletScript = bullet.GetComponent<Bullet>();
+                    bulletScript.Damage = 100;
+                    bulletRB = bullet.GetComponent<Rigidbody>();
+                    bulletRB.velocity = bullet.transform.forward * projectileSpeed;
+                    timeSinceLastFire = 0;
+                }
             } else {
                 timeSinceLastFire += Time.deltaTime;
             }
         }
         if (isColliding) {
             Debug.Log("coliding with tickalable");
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)) {
                 ticklable.Hit(damage, transform.position);
+
+            }
         }
         // transform.localPosition = new Vector3(0, 1.5f + (-holdPos.rotation.x * 3.6f), 1);
         // transform.localRotation = Quaternion.Euler(holdPos.rotation.x, 0, 0);
