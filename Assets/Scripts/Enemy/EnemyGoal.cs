@@ -4,6 +4,7 @@ public class EnemyGoal:MonoBehaviour
 {
     public string description = "Default task";
     public float waitTime = 3;
+    
 
     void OnDrawGizmos()
     {   

@@ -30,8 +30,9 @@ public class TickleTool : MonoBehaviour
     void Update()
     {
         if (isColliding) {
+            Debug.Log("coliding with tickalable");
             if (Input.GetMouseButtonDown(0))
-            ticklable.Hit(damage, transform.position);
+                ticklable.Hit(damage, transform.position);
         }
         // transform.localPosition = new Vector3(0, 1.5f + (-holdPos.rotation.x * 3.6f), 1);
         // transform.localRotation = Quaternion.Euler(holdPos.rotation.x, 0, 0);
@@ -39,9 +40,10 @@ public class TickleTool : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        ticklable = other.transform.GetComponent<Ticklable>();
-        if (ticklable) {
+        Ticklable colliding = other.transform.gameObject.GetComponent<Ticklable>();
+        if (colliding) {
             isColliding = true;
+            ticklable = colliding;
             Debug.Log("Entered tickling zone");
 
         }
@@ -49,9 +51,10 @@ public class TickleTool : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        ticklable = other.transform.GetComponent<Ticklable>();
-        if (ticklable) {
+        Ticklable colliding = other.transform.GetComponent<Ticklable>();
+        if (colliding) {
             isColliding = false;
+            ticklable = null;
             Debug.Log("Exited tickling zone"); 
         }
     }

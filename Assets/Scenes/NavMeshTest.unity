@@ -962,6 +962,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1366184643626748782, guid: fc344a2ceb5e3b242923d7c70c4d1645, type: 3}
+      propertyPath: m_StepOffset
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1917554404426839197, guid: fc344a2ceb5e3b242923d7c70c4d1645, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1280,6 +1284,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2172504411767423234, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.14
@@ -1341,6 +1349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3774273593292820376, guid: ce68921c4ddb07e30832833269a2db97, type: 3}
+      propertyPath: goalParent
+      value: 
+      objectReference: {fileID: 1582348156}
     - target: {fileID: 3774273593292820376, guid: ce68921c4ddb07e30832833269a2db97, type: 3}
       propertyPath: playerTransform
       value: 

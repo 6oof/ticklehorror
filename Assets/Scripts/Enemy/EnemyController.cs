@@ -9,6 +9,7 @@ public class EnemyController : Ticklable
     [SerializeField] private Transform playerTransform; 
     [SerializeField] [Range(0, 25)] private float goalMaxRotationSpeed = 2;
     [SerializeField] public List<EnemyGoal> goals;
+    [SerializeField] private Transform goalParent;
     [SerializeField] private float chaseTime = 1;
     private float _chaseTimeLeft = 0;
     
@@ -41,12 +42,10 @@ public class EnemyController : Ticklable
         {
             if (PlayerInSight())
             {
-                Debug.Log("player in sight");
                 _state = EnemyState.ChasingPlayer;
                 _chaseTimeLeft = chaseTime;
             }
         }
-        Debug.Log(_state);
 
         switch (_state)
         {
@@ -63,6 +62,10 @@ public class EnemyController : Ticklable
 
                 break;
             case EnemyState.LookingForPlayer:
+                Vector3 direction = playerTransform.position - transform.position;
+                Quaternion quat = new Quaternion();
+                quat.SetLookRotation(direction);
+                goals.Insert(0,CreateNewGoal(1, transform.position, quat));
                 break;
             case EnemyState.AchievingGoal:
                 Debug.Log("achieving goal");
@@ -135,8 +138,20 @@ public class EnemyController : Ticklable
         return false;
     }
 
+    private EnemyGoal CreateNewGoal(float time, Vector3 pos, Quaternion rot)
+    {
+        GameObject newGO = new GameObject();
+        newGO.transform.parent = goalParent;
+        newGO.transform.position = pos;
+        newGO.transform.rotation = rot;
+        EnemyGoal newGoal = newGO.AddComponent<EnemyGoal>();
+        newGoal.waitTime = time;
+        return newGoal;
+    }
+
     public override bool Hit(int damage, Vector3 hitPosition)
     {
+        Debug.Log("Hit the enemy");
         if (IsAlive)
         {
             Health -= damage;
