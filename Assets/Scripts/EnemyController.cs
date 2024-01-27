@@ -5,10 +5,12 @@ using UnityEngine.AI;
 
 public class NavTest : MonoBehaviour
 {
+    [SerializeField] [Range(0, 25)] private float goalMaxRotationSpeed = 2;
     
     private NavMeshAgent _navMeshAgent;
     private bool _movingTowardsGoal;
     private float _waitTime;
+    private EnemyGoal _lastGoal;
 
     [SerializeField]
     public List<EnemyGoal> goals;
@@ -22,6 +24,8 @@ public class NavTest : MonoBehaviour
         if (_waitTime > 0)
         {
             _waitTime -= Time.deltaTime;
+            float angleToDestination = Mathf.Clamp(_lastGoal.transform.rotation.eulerAngles.y-transform.rotation.eulerAngles.y, -goalMaxRotationSpeed,goalMaxRotationSpeed);
+            transform.Rotate(Vector3.up * angleToDestination);
         }
         else
         {
@@ -30,6 +34,7 @@ public class NavTest : MonoBehaviour
             {
                 Debug.Log("Goal reached and removed");
                 _waitTime = goals[0].waitTime;
+                _lastGoal = goals[0];
                 goals.RemoveAt(0);
                 _movingTowardsGoal = false;
             }
