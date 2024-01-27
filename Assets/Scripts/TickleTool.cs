@@ -33,6 +33,8 @@ public class TickleTool : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             ticklable.Hit(damage);
         }
+        // transform.localPosition = new Vector3(0, 1.5f + (-holdPos.rotation.x * 3.6f), 1);
+        // transform.localRotation = Quaternion.Euler(holdPos.rotation.x, 0, 0);
     }
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
@@ -52,5 +54,9 @@ public class TickleTool : MonoBehaviour
             isColliding = false;
             Debug.Log("Exited tickling zone"); 
         }
+    }
+
+    private void UpdateTickleTool() {
+        
     }
 }
