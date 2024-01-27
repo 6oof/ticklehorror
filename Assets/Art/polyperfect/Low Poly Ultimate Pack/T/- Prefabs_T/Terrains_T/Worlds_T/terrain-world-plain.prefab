@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33400391529052838}
   - component: {fileID: 23408808342954368}
   - component: {fileID: 64807677664513146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: terrain-world-plain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
