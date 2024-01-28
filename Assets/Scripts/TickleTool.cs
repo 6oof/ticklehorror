@@ -69,7 +69,7 @@ public class TickleTool : MonoBehaviour
             Debug.Log("coliding with tickalable");
             if (Input.GetMouseButtonDown(0)) {
                 ticklable.Hit(damage, transform.position);
-
+                Debug.Log("tickling him");
             }
         }
         // transform.localPosition = new Vector3(0, 1.5f + (-holdPos.rotation.x * 3.6f), 1);
@@ -78,7 +78,7 @@ public class TickleTool : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        Ticklable colliding = other.transform.gameObject.GetComponent<Ticklable>();
+        EnemyController colliding = other.transform.GetComponent<EnemyController>();
         if (colliding) {
             isColliding = true;
             ticklable = colliding;
