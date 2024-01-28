@@ -141,7 +141,7 @@ public class EnemyController : Ticklable
                 Cursor.lockState = CursorLockMode.None;
                 SceneManager.LoadScene("GameOver");
             } else {
-                playerInConeTime = Time.deltaTime;
+                playerInConeTime += Time.deltaTime;
             }
         }
         
