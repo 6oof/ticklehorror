@@ -160,6 +160,7 @@ MonoBehaviour:
   startChasingAudio: {fileID: 8300000, guid: e9322dbba3e0c234390e5356f3af5a3b, type: 3}
   hitAudio: {fileID: 8300000, guid: f85ba6422f7c53bdb9ff6e15fb173b2a, type: 3}
   stopChasingAudio: {fileID: 8300000, guid: 84b3fe11626e19075b2daccda32f73c4, type: 3}
+  walkAudio: {fileID: 8300000, guid: 61fd231e8cf3ae1bb92ddfe2b0dd5b14, type: 3}
   animator: {fileID: 5421036796691095780}
 --- !u!54 &4870627806639724104
 Rigidbody:
@@ -198,7 +199,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 596ae1223ffb26cbab1a2812e42708eb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: e9322dbba3e0c234390e5356f3af5a3b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 61fd231e8cf3ae1bb92ddfe2b0dd5b14, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

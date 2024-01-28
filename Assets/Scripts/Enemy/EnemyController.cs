@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +16,7 @@ public class EnemyController : Ticklable
     [SerializeField] private AudioClip startChasingAudio;
     [SerializeField] private AudioClip hitAudio;
     [SerializeField] private AudioClip stopChasingAudio;
+    [SerializeField] private AudioClip walkAudio;
     private AudioSource _audioSource;
     
     private NavMeshAgent _navMeshAgent;
@@ -183,5 +182,11 @@ public class EnemyController : Ticklable
             return true;
         }
         return false;
+    }
+
+    public void PlayWalkAudio()
+    {
+        _audioSource.pitch = 0.75f + Random.value/2;
+        _audioSource.PlayOneShot(walkAudio);
     }
 }

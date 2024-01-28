@@ -1935,6 +1935,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6984891491873899354, guid: ce68921c4ddb07e30832833269a2db97, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984891491873899354, guid: ce68921c4ddb07e30832833269a2db97, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984891491873899354, guid: ce68921c4ddb07e30832833269a2db97, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
