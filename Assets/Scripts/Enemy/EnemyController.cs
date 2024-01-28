@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,7 +13,12 @@ public class EnemyController : Ticklable
     [SerializeField] private Transform goalParent;
     [SerializeField] private float chaseTime = 1;
     private float _chaseTimeLeft = 0;
-    
+
+    [Header("Audio clips")]
+    [SerializeField] private AudioClip startChasingAudio;
+    [SerializeField] private AudioClip hitAudio;
+    [SerializeField] private AudioClip stopChasingAudio;
+    private AudioSource _audioSource;
     
     private NavMeshAgent _navMeshAgent;
     private EnemyGoal _currentGoal;
@@ -35,6 +41,7 @@ public class EnemyController : Ticklable
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -43,7 +50,11 @@ public class EnemyController : Ticklable
         {
             if (PlayerInSight())
             {
-                _state = EnemyState.ChasingPlayer;
+                if (_state != EnemyState.ChasingPlayer)
+                {
+                    _audioSource.PlayOneShot(startChasingAudio);
+                    _state = EnemyState.ChasingPlayer;
+                }
                 _chaseTimeLeft = chaseTime;
                 animator.SetBool("spotsPlayer", true);
             }
@@ -167,6 +178,7 @@ public class EnemyController : Ticklable
         if (IsAlive)
         {
             Health -= damage;
+            _audioSource.PlayOneShot(hitAudio);
             _state = EnemyState.LookingForPlayer;
             return true;
         }
