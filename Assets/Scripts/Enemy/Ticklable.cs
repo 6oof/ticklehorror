@@ -54,6 +54,7 @@ public class Ticklable : MonoBehaviour
 
     private void SwitchToEndScreen()
     {
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("VictoryScreen");
     }
     
