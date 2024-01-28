@@ -6,7 +6,7 @@ public class AudioAnimPlayer : StateMachineBehaviour
 {
     private EnemyController enemy;
 
-    private float delay = 0.6f;
+    [SerializeField] private float delay = 0.6f;
 
     private float sincePlayed = 0;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
