@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : TickleTool
 {
     private BoxCollider boxCollider;
     // You can set a different damage value for the Bullet class
-    private int bulletDamage = 100;
+    private int bulletDamage = 50;
 
     // Override the Damage property from the base class
     public override int Damage
@@ -30,9 +31,8 @@ public class Bullet : TickleTool
     {
         Ticklable ticklable = other.transform.GetComponent<Ticklable>();
         if (ticklable) {
-            // ticklable.Hit(damage, transform.position);
-            Debug.Log("Bullet hits.");
             ticklable.Hit(Damage, transform.position);
+            GetComponent<Collider>().includeLayers = 0;
         }
     }
 }
