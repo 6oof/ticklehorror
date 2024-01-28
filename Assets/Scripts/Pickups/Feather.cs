@@ -3,7 +3,8 @@ using UnityEngine;
 public class Feather : Pickup
 {
     public TickleTool tt;
-    public int damage = 20;
+    public int damage = 10;
+    public float range = 5f;
     
     void OnTriggerEnter(Collider other)
     {
@@ -18,6 +19,7 @@ public class Feather : Pickup
 
     private void UpdateTickleTool() {
         tt.Damage = damage;
+        tt.range = range;
         foreach (Transform child in tt.transform) {
             child.gameObject.SetActive(false);
         }
