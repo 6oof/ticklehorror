@@ -45,6 +45,11 @@ public class EnemyController : Ticklable
 
     private void Update()
     {
+        if (!IsAlive)
+        {
+            return;
+        }
+
         if (_playerInCone)
         {
             if (PlayerInSight())
@@ -177,6 +182,7 @@ public class EnemyController : Ticklable
         if (IsAlive)
         {
             Health -= damage;
+            animator.SetBool("isAlive", IsAlive); 
             _audioSource.PlayOneShot(hitAudio);
             _state = EnemyState.LookingForPlayer;
             return true;

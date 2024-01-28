@@ -45,16 +45,16 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 887
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.398077, y: 1, z: 5.3412848}
+  m_Size: {x: 8.398077, y: 4, z: 5.3412848}
   m_Center: {x: 1.4704428, y: 0, z: -0.3798623}
 --- !u!54 &8609634165927539706
 Rigidbody:
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lights:
   - {fileID: 4980308756057981433}
+  lightModels: []
 --- !u!1 &7907405990861972276
 GameObject:
   m_ObjectHideFlags: 0
