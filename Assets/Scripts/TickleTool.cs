@@ -42,7 +42,6 @@ public class TickleTool : MonoBehaviour
         bulletSpawnPoint = GameObject.Find("BulletSpawnPoint");
         _audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
-
     }
 
     void Update()
@@ -106,22 +105,24 @@ public class TickleTool : MonoBehaviour
             // _animator.SetBool("isAttacking", false);
             
         }
-            if (timeSinceLastFire > fireRate) {
+        //feather
+        if (timeSinceLastFire > fireRate) {
 
-                if (Input.GetMouseButtonDown(0)) {
-                    if (isColliding) {
+            if (Input.GetMouseButtonDown(0)) {
+                if (isColliding) {
+                    GetComponentInChildren<ParticleSystem>().Play();
                     ticklable.Hit(damage, transform.position);
                     timeSinceLastFire = 0;
-                    }
-                    _animator.SetTrigger("isAttacking");
-                    _audioSource.PlayOneShot(brushSound);
-
                 }
-            } else {
-                timeSinceLastFire += Time.deltaTime;
-                // _animator.SetBool("isAttacking", false);
+                _animator.SetTrigger("isAttacking");
+                _audioSource.PlayOneShot(brushSound);
 
             }
+        } else {
+            timeSinceLastFire += Time.deltaTime;
+            // _animator.SetBool("isAttacking", false);
+
+        }
             
         // transform.localPosition = new Vector3(0, 1.5f + (-holdPos.rotation.x * 3.6f), 1);
         // transform.localRotation = Quaternion.Euler(holdPos.rotation.x, 0, 0);
