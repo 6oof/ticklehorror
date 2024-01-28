@@ -2711,6 +2711,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 903478223413551050, guid: ce68921c4ddb07e30832833269a2db97, type: 3}
+      propertyPath: m_TagString
+      value: Ticklable
+      objectReference: {fileID: 0}
     - target: {fileID: 3774273593292820376, guid: ce68921c4ddb07e30832833269a2db97, type: 3}
       propertyPath: goalParent
       value: 
@@ -6760,7 +6764,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.7566013, y: 1, z: 2.9316692}
+  m_Size: {x: 5.7566013, y: 4, z: 2.9316692}
   m_Center: {x: 11.678124, y: 0, z: 2.6674147}
 --- !u!65 &394795039
 BoxCollider:
@@ -6781,7 +6785,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.6510925, y: 1, z: 14.381273}
+  m_Size: {x: 2.6510925, y: 4, z: 14.381273}
   m_Center: {x: 7.5184717, y: 0, z: -0.37225246}
 --- !u!1 &395955584
 GameObject:

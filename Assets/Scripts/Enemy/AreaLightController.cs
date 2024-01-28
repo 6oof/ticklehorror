@@ -51,32 +51,43 @@ public class AreaLightController : MonoBehaviour
         }
     }
 
+    
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        foreach (var light in lights)
+        if (other.gameObject.CompareTag("Ticklable"))
         {
-            light.enabled = true;
-        }
+            if (other.gameObject.CompareTag("Ticklable"))
+            {
+                Debug.Log("ticklable entered");
+                foreach (var light in lights)
+                {
+                    light.enabled = true;
+                }
 
-        foreach (var lightModel in lightModels)
-        {
-            Material material = lightModel.material;
-            material.SetColor("_EmissionColor", Color.white);
+                foreach (var lightModel in lightModels)
+                {
+                    Material material = lightModel.material;
+                    material.SetColor("_EmissionColor", Color.white);
+                }
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        foreach (var light in lights)
+        if (other.gameObject.CompareTag("Ticklable"))
         {
-            light.enabled = false;
-        }
-        foreach (var lightModel in lightModels)
-        {
-            Material material = lightModel.material;
-            material.SetColor("_EmissionColor", Color.black);
+            Debug.Log("ticklable exited");
+            foreach (var light in lights)
+            {
+                light.enabled = false;
+            }
+            foreach (var lightModel in lightModels)
+            {
+                Material material = lightModel.material;
+                material.SetColor("_EmissionColor", Color.black);
+            }
         }
     }
 }

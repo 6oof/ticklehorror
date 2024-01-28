@@ -88,7 +88,7 @@ public class TickleTool : MonoBehaviour
             
         }
         if (isColliding) {
-            Debug.Log("coliding with tickalable");
+            //Debug.Log("coliding with tickalable");
             if (timeSinceLastFire > fireRate) {
 
                 if (Input.GetMouseButtonDown(0)) {
