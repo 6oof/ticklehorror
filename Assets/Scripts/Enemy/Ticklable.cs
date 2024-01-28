@@ -24,6 +24,7 @@ public class Ticklable : MonoBehaviour
             _health = value;
             if (_health <= 0) {
                 IsAlive = false;
+                Invoke("SwitchToEndScreen", 3);
             }
         }
     }
@@ -35,8 +36,6 @@ public class Ticklable : MonoBehaviour
         } set {
             _isAlive = value;
             Debug.Log("IsAlive set " + value);
-            SceneManager.LoadScene("VictoryScreen");
-            
         }
     }
 
@@ -52,4 +51,11 @@ public class Ticklable : MonoBehaviour
         }
         return false;
     }
+
+    private void SwitchToEndScreen()
+    {
+        SceneManager.LoadScene("VictoryScreen");
+    }
+    
+    
 }
