@@ -14,6 +14,12 @@ public class AreaLightController : MonoBehaviour
     {
         FindLights(transform);
         FindLightModels(lights);
+
+        foreach (var lightModel in lightModels)
+        {
+            Material material = lightModel.material;
+            material.SetColor("_EmissionColor", Color.black);
+        }
     }
 
     private void FindLights(Transform parent)
@@ -26,9 +32,10 @@ public class AreaLightController : MonoBehaviour
                 lights.Add(lightComponent);
             }
 
-
-
             FindLights(child);
+
+
+
         }
     }
 
