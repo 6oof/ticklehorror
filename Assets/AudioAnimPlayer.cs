@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AudioAnimPlayer : StateMachineBehaviour
 {
     private EnemyController enemy;
 
     [SerializeField] private float delay = 0.6f;
+    [SerializeField] private float movementSpeed = 3.5f;
+    
 
     private float sincePlayed = 0;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemy = animator.gameObject.transform.parent.GetComponent<EnemyController>();
-        
+        enemy.gameObject.GetComponent<NavMeshAgent>().speed = movementSpeed;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
