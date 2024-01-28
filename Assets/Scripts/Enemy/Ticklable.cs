@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ticklable : MonoBehaviour
 {
@@ -33,6 +35,8 @@ public class Ticklable : MonoBehaviour
         } set {
             _isAlive = value;
             Debug.Log("IsAlive set " + value);
+            SceneManager.LoadScene("VictoryScreen");
+            
         }
     }
 

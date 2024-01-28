@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 5
-  damage: 20
+  damage: 5
   fireRate: 0.25
   bulletsFired: 0
   timeSinceLastFire: 0.5
@@ -502,6 +502,10 @@ MonoBehaviour:
   isColliding: 0
   projectileSpeed: 30
   bulletSpawnPoint: {fileID: 7079828496375141088}
+  brushSound: {fileID: 8300000, guid: 67bebf997b4696644ba4b03755360037, type: 3}
+  dusterSound: {fileID: 8300000, guid: 67bebf997b4696644ba4b03755360037, type: 3}
+  nerfSound: {fileID: 8300000, guid: 77b4c51fd0e9ae548b8867e218b625fe, type: 3}
+  alienSound: {fileID: 8300000, guid: 1e12c88985d936d4aa814eff89b1c6c6, type: 3}
 --- !u!1 &7076696845429721905
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,7 +626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4804163984464216138
 Transform:
   m_ObjectHideFlags: 0
