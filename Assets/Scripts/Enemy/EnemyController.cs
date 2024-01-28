@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : Ticklable
 {
@@ -24,6 +25,8 @@ public class EnemyController : Ticklable
     [SerializeField]private Animator animator;
     private float _waitTime;
 
+    private float gameOverTriggerTime = 2f;
+    private float playerInConeTime = 0;
     private enum EnemyState
     {
         LookingForPlayer,
@@ -133,6 +136,15 @@ public class EnemyController : Ticklable
                 break;
         }
 
+        if ( PlayerInSight() ) {
+            if ( playerInConeTime > gameOverTriggerTime) {
+                Cursor.lockState = CursorLockMode.None;
+                SceneManager.LoadScene("GameOver");
+            } else {
+                playerInConeTime = Time.deltaTime;
+            }
+        }
+        
 
     }
 
