@@ -492,8 +492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f92d808c636aa41bbde000a128c9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
-  damage: 5
+  range: 5
+  damage: 20
   fireRate: 0.25
   bulletsFired: 0
   timeSinceLastFire: 0.5
@@ -622,7 +622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4804163984464216138
 Transform:
   m_ObjectHideFlags: 0
