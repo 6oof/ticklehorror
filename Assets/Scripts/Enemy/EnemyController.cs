@@ -25,7 +25,7 @@ public class EnemyController : Ticklable
     [SerializeField]private Animator animator;
     private float _waitTime;
 
-    private float gameOverTriggerTime = 2f;
+    private float gameOverTriggerTime = 3f;
     private float playerInConeTime = 0;
     private enum EnemyState
     {
@@ -143,6 +143,8 @@ public class EnemyController : Ticklable
             } else {
                 playerInConeTime += Time.deltaTime;
             }
+        } else {
+            playerInConeTime = 0;
         }
         
 
