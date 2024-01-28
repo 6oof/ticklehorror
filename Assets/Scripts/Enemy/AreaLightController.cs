@@ -59,7 +59,7 @@ public class AreaLightController : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Ticklable"))
             {
-                Debug.Log("ticklable entered");
+                //Debug.Log("ticklable entered");
                 foreach (var light in lights)
                 {
                     light.enabled = true;

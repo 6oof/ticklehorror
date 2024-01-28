@@ -81,7 +81,8 @@ public class TickleTool : MonoBehaviour
                     if (Input.GetMouseButton(0)) {
                         if (bulletsFired < 4) {
                             _animator.SetTrigger("isAttackingGun");
-                        }                            timeSinceLastFire = 0;
+                        }                            
+                        timeSinceLastFire = 0;
                         var bullet = Instantiate (blasterBullet, bulletSpawnPoint.transform.position, transform.rotation);
                         var bulletScript = bullet.GetComponent<Bullet>();
                         bulletScript.Damage = 100;

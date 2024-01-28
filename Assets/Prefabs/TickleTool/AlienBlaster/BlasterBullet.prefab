@@ -128,7 +128,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -154,12 +154,17 @@ MonoBehaviour:
   range: 5
   damage: 50
   fireRate: 1
+  bulletsFired: 0
   timeSinceLastFire: 2
   nerfBullet: {fileID: 0}
   blasterBullet: {fileID: 2920890004507955418}
   isColliding: 0
   projectileSpeed: 10
   bulletSpawnPoint: {fileID: 0}
+  brushSound: {fileID: 0}
+  dusterSound: {fileID: 0}
+  nerfSound: {fileID: 0}
+  alienSound: {fileID: 0}
 --- !u!54 &1020480029614867012
 Rigidbody:
   m_ObjectHideFlags: 0
